@@ -1,0 +1,30 @@
+ACL SETUSER mahdi
+OK
+127.0.0.1:6379> ACL LIST
+1) "user default on nopass ~* +@all"
+2) "user mahdi off -@all"
+127.0.0.1:6379> ACL SETUSER mahdi on
+OK
+127.0.0.1:6379> ACL LIST
+1) "user default on nopass ~* +@all"
+2) "user mahdi on -@all"
+127.0.0.1:6379> ACL SETUSER mahdi >mahdipizza113366
+OK
+127.0.0.1:6379> acl list
+1) "user default on nopass ~* +@all"
+2) "user mahdi on #41253c873cc6ce47f7224c37d1d277ef0578e64b8ec443fb84623be7a1dab0e9 -@all"
+127.0.0.1:6379> ACL WHOAMI
+"default"
+127.0.0.1:6379> ACL SETUSER mahdi +get
+OK
+127.0.0.1:6379> AUTH mahdi mahdipizza113366
+OK
+127.0.0.1:6379> ACL WHOAMI
+(error) NOPERM this user has no permissions to run the 'acl' command or its subcommand
+127.0.0.1:6379> ACL GETUSER mahdi
+(error) NOPERM this user has no permissions to run the 'acl' command or its subcommand
+127.0.0.1:6379> 
+mahdi@misterbahari:~/Desktop/Databases/REDIS$ redis-cli 
+127.0.0.1:6379> ACL SETUSER mahdi allkeys
+OK
+

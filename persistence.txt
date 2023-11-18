@@ -1,0 +1,45 @@
+root@misterbahari:/home/mahdi# cd /var/lib/redis/
+root@misterbahari:/var/lib/redis# ls
+dump.rdb
+root@misterbahari:/var/lib/redis# cat dump.rdb 
+REDIS0009�	redis-ver6.0.16�
+�edis-bits�@�ctime��Yeused-memU
+ aof-preamble���userwmmdname1HYLLXe�T�E��E�G�age�users2karimalirezanum1�{namekevuser199age�namemahdifnamebaharjobdev�mylistioioialihello�num3�usersrezammd
+                                                                          class--amir�bob�jack�anna��name2YLLN��H��KB�]v��M��>7�root@misterbahari:/var/lib/redis# 
+root@misterbahari:/var/lib/redis# cp /var/lib/redis/dump.rdb /home/mahdi/Desktop/
+root@misterbahari:/var/lib/redis# 
+
+
+
+
+###################################################################################
+
+
+
+
+127.0.0.1:6379> config get dir
+1) "dir"
+2) "/var/lib/redis"
+127.0.0.1:6379> SAVE
+OK
+127.0.0.1:6379> KEYS *
+ 1) "userw"
+ 2) "name1"
+ 3) "age"
+ 4) "users2"
+ 5) "num1"
+ 6) "name"
+ 7) "rginseog"
+ 8) "name3"
+ 9) "user1"
+10) "mylist"
+11) "num3"
+12) "users"
+13) "class"
+14) "name2"
+127.0.0.1:6379> BGSAVE
+Background saving started
+127.0.0.1:6379> config get appendfsync
+1) "appendfsync"
+2) "everysec"
+
