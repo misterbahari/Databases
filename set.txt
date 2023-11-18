@@ -1,0 +1,58 @@
+redis-cli
+127.0.0.1:6379> SADD nums 1 2 3 4 5 6 7 8 9 
+(integer) 9
+127.0.0.1:6379> nums
+(error) ERR unknown command `nums`, with args beginning with: 
+127.0.0.1:6379> get nums
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> smembers nums
+1) "1"
+2) "2"
+3) "3"
+4) "4"
+5) "5"
+6) "6"
+7) "7"
+8) "8"
+9) "9"
+127.0.0.1:6379> el nums
+(error) ERR unknown command `el`, with args beginning with: `nums`, 
+127.0.0.1:6379> del nums
+(integer) 1
+127.0.0.1:6379> SADD user1 amir kevin jane jack amir
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> SADD user1 amir kevin jane jack 
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> SADD user1 amir reza ali
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> SADD users ali reza mmd
+(integer) 3
+127.0.0.1:6379> smembers users
+1) "ali"
+2) "mmd"
+3) "reza"
+127.0.0.1:6379> SADD users2 ali karim reza
+(integer) 3
+127.0.0.1:6379> SMEMBERS users2
+1) "ali"
+2) "karim"
+3) "reza"
+127.0.0.1:6379> sdiff users users2
+1) "mmd"
+127.0.0.1:6379> sinter users users2
+1) "ali"
+2) "reza"
+127.0.0.1:6379> SMEMBERS users
+1) "ali"
+2) "mmd"
+3) "reza"
+127.0.0.1:6379> sdiffstore userw users users2
+(integer) 1
+127.0.0.1:6379> SMEMBERS userw
+1) "mmd"
+127.0.0.1:6379> SMOVE users users2 ali
+(integer) 1
+127.0.0.1:6379> SMEMBERS users
+1) "mmd"
+2) "reza"
+

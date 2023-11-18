@@ -1,0 +1,81 @@
+
+##PUBLISH
+
+127.0.0.1:6379> PUBLISH one hello
+(integer) 0
+127.0.0.1:6379> PUBLISH one hello
+(integer) 1
+127.0.0.1:6379> PUBLISH two ame
+(integer) 1
+127.0.0.1:6379> PUBLISH one hello
+(integer) 1
+127.0.0.1:6379> PUBLISH oke hhh
+(integer) 1
+127.0.0.1:6379> pubsub channels
+1) "one"
+2) "two"
+127.0.0.1:6379> 
+
+
+
+##SUBSCRIBE
+
+redis-cli
+127.0.0.1:6379> clear
+127.0.0.1:6379> SUBSCRIBE one two
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "one"
+3) (integer) 1
+1) "subscribe"
+2) "two"
+3) (integer) 2
+1) "message"
+2) "one"
+3) "hello"
+1) "message"
+2) "two"
+3) "ame"
+^C 	
+mahdi@misterbahari:~$ redis-cli
+127.0.0.1:6379> SUBSCRIBE one
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "one"
+3) (integer) 1
+^C
+mahdi@misterbahari:~$ redis-cli
+127.0.0.1:6379> PSUBSCRIBE o?e
+Reading messages... (press Ctrl-C to quit)
+1) "psubscribe"
+2) "o?e"
+3) (integer) 1
+1) "pmessage"
+2) "o?e"
+3) "one"
+4) "hello"
+1) "pmessage"
+2) "o?e"
+3) "oke"
+4) "hhh"
+^C
+mahdi@misterbahari:~$ redis-cli
+127.0.0.1:6379> SUBSCRIBE one two
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "one"
+3) (integer) 1
+1) "subscribe"
+2) "two"
+3) (integer) 2
+
+
+
+
+
+
+
+
+
+
+

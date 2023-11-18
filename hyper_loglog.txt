@@ -1,0 +1,20 @@
+redis-cli
+127.0.0.1:6379> PFADD name1 amir jack anna
+(integer) 1
+127.0.0.1:6379> PFCOUNT name1
+(integer) 3
+127.0.0.1:6379> PFADD name1 kevin
+(integer) 1
+127.0.0.1:6379> PFCOUNT name1
+(integer) 4
+127.0.0.1:6379> PFADD name2 karim mmd reza
+(integer) 1
+127.0.0.1:6379> PFCOUNT
+(error) ERR wrong number of arguments for 'pfcount' command
+127.0.0.1:6379> PFCOUNT name2
+(integer) 3
+127.0.0.1:6379> PFMERGE name3 name1 name2
+OK
+127.0.0.1:6379> PFCOUNT name3
+(integer) 7
+
