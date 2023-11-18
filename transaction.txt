@@ -1,0 +1,51 @@
+1.
+multi
+OK
+127.0.0.1:6379> set name mahdi
+QUEUED
+127.0.0.1:6379> set age 30
+QUEUED
+127.0.0.1:6379> get name
+QUEUED
+127.0.0.1:6379> get age
+QUEUED
+127.0.0.1:6379> watch name
+(error) ERR WATCH inside MULTI is not allowed
+127.0.0.1:6379> exec
+1) OK
+2) OK
+3) "mahdi"
+4) "30"
+127.0.0.1:6379> exec
+(error) ERR EXEC without MULTI
+127.0.0.1:6379> watch name
+OK
+127.0.0.1:6379> multi
+OK
+127.0.0.1:6379> set name mahdi
+QUEUED
+127.0.0.1:6379> get name
+QUEUED
+127.0.0.1:6379> set name jack
+QUEUED
+127.0.0.1:6379> del name
+QUEUED
+127.0.0.1:6379> exec
+(nil)
+127.0.0.1:6379> multi 
+OK
+127.0.0.1:6379> name reza
+(error) ERR unknown command `name`, with args beginning with: `reza`, 
+127.0.0.1:6379> set name reza
+QUEUED
+127.0.0.1:6379> DISCARD
+OK
+127.0.0.1:6379> exec
+(error) ERR EXEC without MULTI
+
+
+
+2.
+ set name kevin
+OK
+

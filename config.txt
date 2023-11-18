@@ -1,0 +1,13 @@
+config get maxclients
+1) maxclients
+2) 10000
+127.0.0.1:6379> config get requirepass
+1) requirepass
+2) 
+127.0.0.1:6379> config set reqiurepass 113366
+(error) ERR Unsupported CONFIG parameter: reqiurepass
+127.0.0.1:6379> 
+root@misterbahari:/etc/redis# ls -l etc/redis/redis.conf
+ls: cannot access 'etc/redis/redis.conf': No such file or directory
+root@misterbahari:/etc/redis# ls -l /etc/redis/redis.conf
+-rw-r----- 1 redis redis 85844 مارس     4  2022 /etc/redis/redis.conf
