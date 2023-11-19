@@ -1,2 +1,2 @@
-# REDIS
-this is a repo for REDIS so i can review queries
+# DATABASES
+this is a repo for DATABASES so i can review queries
